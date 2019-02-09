@@ -1,6 +1,7 @@
 const discord = require("discord.js")
 client = new discord.Client()
-colors = require('./colors.json')status = true;
+colors = require('./colors.json')
+status = true;
 const prefixbc = "+"
 client.on('message', async message => {  
 if(message.author.bot) return;
