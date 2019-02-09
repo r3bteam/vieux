@@ -38,20 +38,26 @@ message.channel.sendEmbed(embed)}
 });
 
 
-client.on('ready', ()=>{
-   console.log(`I'm ready!!`);
-   
-   // code ::
-   let guild = client.guilds.get('520344192153550848');
-   if(status)
-      for(let i=0;i<colors.length;i++) guild.createRole({name:i+1,color:colors[i]});
-   else
-      for(let i=0;i<colors.length;){
-         let role=guild.roles.find('name',(i+1));
-         if(role) role.delete();
-      }
-   
-   // :: oode
+client.on('message', async message => {
+  if(message.author.bot) return;
+  let prefix = '%';
+
+  let command = message.content.split(" ")[0].slice(prefix.length);
+  let args = message.content.split(" ").slice(1);
+  if(!message.content.toLowerCase().startsWith(prefix)) return;
+
+  if(command == 'مسح الالوان' ) {
+    if(!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send(`لاتمتلك الصلاحيات لفعل ذلك! ❌`);
+    message.channel.send("جاري المسح..").then(async m => {
+      await message.guild.roles.forEach(role => {
+        if(/^\d+$/gi.test(role.name)) {
+          role.delete();
+        }
+      });
+      m.edit(`تم إزالة جميع الالوان.`)
+    });
+  }
 });
+
 
 client.login(process.env.BOT_TOKEN);
