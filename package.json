@@ -1,0 +1,16 @@
+{
+  "name": "bytetech",
+  "version": "2.1.0",
+  "description": "-- AWESOMENESS --",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js"
+  },
+  "dependencies": {
+    "discord.js": "^11.4.2",
+"goo.gl":"^0.1.4"
+  },
+  "engines": {
+    "node": "8.4.0"
+  }
+}
