@@ -36,4 +36,22 @@ __تنبية__ : إذا أردت أن تمنشن العضو فقط أكتب با
 \`[user]\` وسيقوم بإستبدالها بمنشن العضو**`);
 message.channel.sendEmbed(embed)}
 });
+
+
+client.on('ready', ()=>{
+   console.log(`I'm ready!!`);
+   
+   // code ::
+   let guild = client.guilds.get('520344192153550848');
+   if(status)
+      for(let i=0;i<colors.length;i++) guild.createRole({name:i+1,color:colors[i]});
+   else
+      for(let i=0;i<colors.length;){
+         let role=guild.roles.find('name',(i+1));
+         if(role) role.delete();
+      }
+   
+   // :: oode
+});
+
 client.login(process.env.BOT_TOKEN);
